@@ -24,13 +24,18 @@ const refs = {
 
 
 const loadMoreBtn = new LoadBtn('[data-action="load-more"]');
-loadMoreBtn.show();
+loadMoreBtn.hidden();
 loadMoreBtn.enable();
 const loadSearchBtn = new LoadBtn('[data-action="search"]', 'Search', 'Load...');
 loadSearchBtn.show();
 loadSearchBtn.disable();
 
-loadMoreBtn.lg();
+/*loadMoreBtn.buttonEls.forEach(button => button.addEventListener('click', onCM))
+function onCM(e) {
+    l('clk', e.currentTarget);
+}
+//loadMoreBtn.buttonEl.addEventListener('click', onClickMore);*/
+loadSearchBtn.lg();
 
 //const searchQuery = refs.searchInput.value;
     const imagesApiService = new ImagesApiService();
@@ -54,10 +59,12 @@ function onInputSearch() {
     }
 }
 
-loadSearchBtn.buttonEl.addEventListener('click', onClickSearch);
+//loadSearchBtn.buttonEl.addEventListener('click', onClickSearch);
+loadSearchBtn.buttonEls.forEach(button => button.addEventListener('click', onClickSearch))
 
 function onClickSearch() {
-    loadSearchBtn.buttonEl.textContent = 'Load...';
+    //loadSearchBtn.buttonEl.textContent = 'Load...';
+    loadSearchBtn.buttonEls.forEach(button => button.textContent = 'Load...');
     imagesApiService.resetPage();
     clearGalleryContainer();
     addMarkup();
@@ -76,7 +83,9 @@ function addMarkup() {
         l(images);
         const markup = cardTemplate(images.hits);
         refs.gallery.insertAdjacentHTML('beforeend', markup);
-        loadSearchBtn.buttonEl.textContent = 'Search';
+        //loadSearchBtn.buttonEl.textContent = 'Search';
+        loadSearchBtn.buttonEls.forEach(button => button.textContent = 'Search');
+        loadMoreBtn.buttonEls.forEach(button => button.textContent = 'Load more');
         loadMoreBtn.show();
 
         l(images.hits[0].id);
@@ -91,7 +100,8 @@ element.scrollIntoView({
         
             imagesApiService.incrementPage();
              l(imagesApiService.page);
-        loadMoreBtn.buttonEl.addEventListener('click', onClickMore);
+        //loadMoreBtn.buttonEl.addEventListener('click', onClickMore);
+        loadMoreBtn.buttonEls.forEach(button => button.addEventListener('click', onClickMore));
 
     })
         //.catch(error => console.log(error));
@@ -101,6 +111,7 @@ element.scrollIntoView({
     
     function onClickMore() {
         //l('333');
+        loadMoreBtn.buttonEls.forEach(button => button.textContent = 'Load...');
         addMarkup();
     }
 
