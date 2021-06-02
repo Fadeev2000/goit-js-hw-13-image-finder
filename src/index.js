@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import ImagesApiService from './js/apiService';
-import { consts } from './js/consts';
+//import { consts } from './js/consts';
 import cardTemplate from './templates/card-image';
 import LoadBtn from './js/components/load-btn';
 
@@ -12,9 +12,9 @@ let l = console.log;
 
 const refs = {
     gallery: document.querySelector('.gallery'),
-    searchBtn: document.querySelector('button[data-action="search"]'),
+    //searchBtn: document.querySelector('button[data-action="search"]'),
     searchInput: document.querySelector('.search-form input'),
-    loadBtn: document.querySelector('.load-button'),
+    //loadBtn: document.querySelector('.load-button'),
 }
 
 //const { BASE_URL, numberPage, KEY, refs } = consts;
@@ -88,15 +88,16 @@ function addMarkup() {
         loadMoreBtn.buttonEls.forEach(button => button.textContent = 'Load more');
         loadMoreBtn.show();
 
-        l(images.hits[0].id);
-        const myElementSelector = String(images.hits[11].id);
+        //l(images.hits[0].id);
+        scrollDown(images.hits[2].id);
+        /*const myElementSelector = String(images.hits[0].id);
         l(myElementSelector);
         const element = document.getElementById(myElementSelector);
         l(element);
 element.scrollIntoView({
   behavior: 'smooth',
   block: 'end',
-});
+});*/
         
             imagesApiService.incrementPage();
              l(imagesApiService.page);
@@ -113,6 +114,17 @@ element.scrollIntoView({
         //l('333');
         loadMoreBtn.buttonEls.forEach(button => button.textContent = 'Load...');
         addMarkup();
+    }
+
+function scrollDown(myElementSelector) {
+        //const myElementSelector = String(images.hits[0].id);
+        //l(myElementSelector);
+        const element = document.getElementById(myElementSelector);
+        l(element);
+element.scrollIntoView({
+  behavior: 'smooth',
+  block: 'end',
+});
     }
 
 
