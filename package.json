@@ -3,24 +3,25 @@
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://fadeev2000.github.io/parcel",
+  "homepage": "https://fadeev2000.github.io/goit-js-hw-13-image-finder",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel/",
+    "build": "parcel build src/*.html --public-url /goit-js-hw-13-image-finder/",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://fadeev2000.github.io/parcel.git"
+    "url": "git+https://fadeev2000.github.io/goit-js-hw-13-image-finder.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://fadeev2000.github.io/parcel/issues"
+    "url": "https://fadeev2000.github.io/goit-js-hw-13-image-finder/issues"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "gh-pages": "^3.1.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
