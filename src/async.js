@@ -9,7 +9,7 @@ import '@pnotify/core/dist/material.css';
 import 'material-design-icons/iconfont/material-icons.css';*/
 
 
-let l = console.log;
+//let l = console.log;
 
 /*function messageChangeInput(message) {
     
@@ -23,6 +23,7 @@ let l = console.log;
 const refs = {
     gallery: document.querySelector('.gallery'),
     searchInput: document.querySelector('.search-form input'),
+    form: document.querySelector('.search-form'),
 }
 
 const loadMoreBtn = new LoadBtn('[data-action="load-more"]');
@@ -48,9 +49,12 @@ function onInputSearch() {
     }
 }
 
-loadSearchBtn.buttonEls.forEach(button => button.addEventListener('click', onClickSearch))
+//loadSearchBtn.buttonEls.forEach(button => button.addEventListener('click', onClickSearch))
+refs.form.addEventListener('submit', onSubmit);
 
-function onClickSearch() {
+function onSubmit(e) {
+    e.preventDefault();
+
     loadSearchBtn.buttonEls.forEach(button => button.textContent = 'Load...');
     imagesApiService.resetPage();
     clearGalleryContainer();

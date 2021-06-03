@@ -9,6 +9,7 @@ import LoadBtn from './js/fetch/components/load-btn';
 const refs = {
     gallery: document.querySelector('.gallery'),
     searchInput: document.querySelector('.search-form input'),
+    form: document.querySelector('.search-form'),
 }
 
 
@@ -34,9 +35,12 @@ function onInputSearch() {
     }
 }
 
-loadSearchBtn.buttonEls.forEach(button => button.addEventListener('click', onClickSearch))
+//loadSearchBtn.buttonEls.forEach(button => button.addEventListener('submit', onSubmitSearch));
+refs.form.addEventListener('submit', onSubmit);
 
-function onClickSearch() {
+function onSubmit(e) {
+    e.preventDefault();
+
     loadSearchBtn.buttonEls.forEach(button => button.textContent = 'Load...');
     imagesApiService.resetPage();
     clearGalleryContainer();
